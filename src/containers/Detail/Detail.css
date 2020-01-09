@@ -1,0 +1,21 @@
+.detail {
+    display: grid;
+    grid-template-columns: minmax(1fr auto);
+    justify-items: center;
+    padding: 5px;
+    grid-template-rows: minmax(10px, auto);
+}
+
+.detail img {
+    background-color: #f8f8f0;
+    border: 1px transparent;
+    border-radius: 7px;
+    width: 900px;
+    height: 600px;
+}
+
+.price {
+    font-size: 20px;
+    font-weight: 600;
+    padding: 10px;
+}

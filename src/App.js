@@ -1,6 +1,8 @@
 import React from 'react';
 import Layout from './containers/Layout/Layout';
-import Main from './containers/Main/main';
+import Products from './containers/Products/Products';
+import Detail from './containers/Detail/Detail';
+import Footer from './components/Footer/Footer';
 import Aux from './hoc/Aux';
 import './App.css';
 
@@ -8,7 +10,11 @@ function App() {
   return (
     <Aux>
       <Layout/>
-      <Main/>
+      <div className="Main">
+        <Products/>
+        <Detail/>
+      </div>
+      <Footer/>
     </Aux>
   );
 }

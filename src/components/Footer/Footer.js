@@ -1,4 +1,5 @@
 import React from 'react';
+import './Footer.css';
 
 const Footer = () => {
 
@@ -6,7 +7,7 @@ const Footer = () => {
 
     return (
         <div className="footer">
-            <span>Copyright UniMall {date}</span>
+            <span>&copy;Copyright UniMall {date}</span>
         </div>
     )
 }
