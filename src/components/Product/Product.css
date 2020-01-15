@@ -12,29 +12,23 @@
     box-sizing: border-box;
 }
 
-.card__lg a {
-    text-decoration: none;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    color: black;
-    padding: 2px;
-}
-
 .card__lg img {
     background-color: #f8f0f0;
     border: 1px solid #f8f0f0;
     border-radius: 7px;
     box-sizing: border-box;
     width: 100%;
-    height: 75%;
+    height: 80%;
 }
 
-.card__lg a div.name {
-    height: 15%;
+.card__lg div.name {
+    height: 10%;
     box-sizing: border-box;
     padding: 3px;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .opt {
@@ -57,11 +51,6 @@
     border-radius: 5px;
     box-shadow: 2px 1px 3px gray;
     font-weight: 500;
-}
-
-.opt button a {
-    color: white;
-    text-decoration: none;
 }
 
 @media(max-width: 900px) {

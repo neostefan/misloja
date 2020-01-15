@@ -4,6 +4,10 @@ import './Products.css';
 
 class Main extends Component {
 
+    componentDidMount() {
+        console.log(this.props);
+    }
+
     render(){
 
         return(

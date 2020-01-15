@@ -32,6 +32,11 @@
     color: tomato;
 }
 
+a {
+    text-decoration: none;
+    color: white;
+}
+
 @media(max-width: 650px) {
     .nav {
         display: none;

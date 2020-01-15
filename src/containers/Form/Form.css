@@ -1,0 +1,107 @@
+.myForm {
+    display: flex;
+    justify-content: center;
+    padding: 15px 0;
+    border: 1px solid #b6b1b1;
+    background-color: #ffffff;
+    box-shadow: 4px 1px 7px gray;
+    box-sizing: border-box;
+    border-radius: 7px;
+    width: 400px;
+    height: auto;
+    margin: 10px auto;
+}
+
+.myForm form { 
+    display: flex;
+    flex-direction: column;
+    height: 90%;
+    width: 80%;
+    align-items: center;
+}
+
+.myForm form .form-group {
+    display: flex;
+    flex-direction: column;
+    margin: 5px 0;
+    width: 100%;
+    height: 10%;
+    padding: 5px 0;
+}
+
+.myForm form .form-group input {
+    width: 100%;
+    height: 100%;
+    border-radius: 7px;
+    border-width: 1px;
+    border-bottom: 2px solid aqua;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    padding: 5px;
+    outline-color: goldenrod;
+}
+
+.myForm form .form-group-opt {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: goldenrod;
+    margin: 5px 0;
+}
+
+.myForm form .form-group-opt button {
+    background-color: goldenrod;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    width: 25%;
+    border: 1px solid goldenrod;
+    margin: 10px 0;
+    font-size: 12px;
+    box-sizing: border-box;
+    font-weight: 700;
+}
+
+.myForm form .form-group-opt button:hover {
+    background-color: blue;
+    cursor: pointer;
+    border: 1px solid blue;
+}
+
+.myForm form .form-group-opt div:hover {
+    color: blue;
+    cursor: pointer;
+}
+
+.myForm form .form-group textarea {
+    padding: 7px;
+    box-sizing: border-box;
+    border: 1px solid aqua;
+    border-radius: 7px;
+}
+
+.error {
+    text-align: center;
+    margin-top: 10px;
+    background-color: #f17f7f;
+    color: white;
+    padding: 5px;
+    width: 25%;
+    margin: auto;
+    border: 1px solid red;
+    border-radius: 7px;
+    font-size: 13px;
+}
+
+/* .myForm form .form-group select option:hover {
+    background-color: goldenrod;
+} */
+
+@media(max-width: 550px) {
+    .myForm {
+        width: 300px;
+    }
+}
