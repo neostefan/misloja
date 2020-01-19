@@ -39,7 +39,10 @@
     border-left: none;
     border-right: none;
     padding: 5px;
-    outline-color: goldenrod;
+}
+
+.myForm form .form-group input:focus {
+    outline-color: none;
 }
 
 .myForm form .form-group-opt {
@@ -83,17 +86,33 @@
     border-radius: 7px;
 }
 
-.error {
-    text-align: center;
-    margin-top: 10px;
-    background-color: #f17f7f;
-    color: white;
-    padding: 5px;
-    width: 25%;
-    margin: auto;
+.errorsFail {
+    display: flex;
+    justify-content: center;
+    color: red;
+    background-color: #ec8383;
     border: 1px solid red;
     border-radius: 7px;
-    font-size: 13px;
+    width: 200px;
+    padding: 5px;
+}
+
+.errorsSuccess {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    color: green;
+    background-color: #71d671;
+    border: 1px solid green;
+    border-radius: 7px;
+    width: 300px;
+    padding: 5px;
+}
+
+.error {
+    color: red;
 }
 
 /* .myForm form .form-group select option:hover {
