@@ -1,24 +1,21 @@
 import React, { Component } from 'react';
 import { Formik } from 'formik';
+import { connect } from 'react-redux';
 import * as Yup from 'yup';
-import '../Form.css';
-import axios from 'axios';
+import * as actionCreators from '../../../store/actions';
 import Aux from '../../../hoc/Aux';
+import '../Form.css';
 
 class UserForm extends Component {
 
-    state = {
-        hasErrors: false,
-        hasMessage: false,
-        message: null
-    }
-
     onClickHandler = () => {
-        console.log(this.props.match.url);
         this.props.history.push('/login');
     }
 
     render() {
+
+        let Style = this.props.error ? "errorsFail" : "errorsSuccess";
+
         const validationSchema = Yup.object().shape({
             email: Yup.string().email().required(),
             password: Yup.string().required().min(7)
@@ -28,18 +25,16 @@ class UserForm extends Component {
             <Formik initialValues={{email: "", password: ""}} validationSchema={validationSchema}
                 onSubmit={(values, actions) => {
                     actions.setSubmitting(true);
-                    let url = "http://localhost:8080" + this.props.match.url;
-                    axios.post(url, values).then(Response => {
-                        this.setState({ hasMessage: true, message: Response.data.msg });
-                    }).catch(err =>  {
-                        this.setState({hasErrors: true, message: err});
-                    })
+                    
+                    this.props.onAuth(values);
+
                     actions.setSubmitting(false);
                     actions.resetForm();
                 }}>
                 {({values, touched, handleSubmit, handleBlur, handleChange, errors, isSubmitting}) => (
                     <Aux>
-                        { this.state.hasMessage ? <div>{this.state.message}</div> : null }
+                        { this.props.error ? <div className={Style}>{this.props.error}</div> : null }
+                        { this.props.msg ? <div className={Style}>{this.props.msg}</div> : null }
                         <div className="myForm">
                             <form onSubmit={handleSubmit}>
                                 <div className="form-group">
@@ -66,4 +61,17 @@ class UserForm extends Component {
     }
 }
 
-export default UserForm;
+const mapStateToProps = state => {
+    return {
+        error: state.auth.error,
+        msg: state.auth.msg
+    }
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        onAuth: (values) => dispatch(actionCreators.auth(values, ownProps))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserForm);

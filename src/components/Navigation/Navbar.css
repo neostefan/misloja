@@ -1,11 +1,13 @@
 .topbar {
     width: 100%;
-    height: 56px;
+    height: 45px;
     margin: 0;
     background: goldenrod;
     display: flex;
-    align-items: center;
+    text-align: center;
     color: white;
+    padding: 10px;
+    box-sizing: border-box;
 }
 
 .topbar .menu, .topbar .logo{
@@ -13,33 +15,86 @@
 }
 
 .nav__ul {
+    margin: 0;
     padding: 0;
     list-style: none;
     display: flex;
 }
 
 .nav__ul .Item a {
-    padding: 0 10px;
+    padding: 10px;
     text-decoration: none;
     color: white;
+}
+
+.nav__ul .ItemDropdown {
+    padding: 0 10px;
+    margin: 0;
+}
+
+.nav__ul .ItemDropdown:hover {
+    cursor: pointer;
+}
+
+.nav__ul .ItemDropdown .dropdown {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    line-height: 25px;
+    display: none;
+}
+
+.nav__ul .ItemDropdown .open li {
+    width: 100%;
+}
+
+.nav__ul .ItemDropdown:hover .open:hover li:hover {
+    background-color: blue;
+    display: block;
+    cursor: pointer;
 }
 
 .topbar .spacer {
     flex: 1;
 }
 
-.nav__ul .Item a:hover {
-    color: tomato;
+.nav__ul .ItemDropdown .open {
+    background-color: goldenrod;
+    z-index: 100;
+    opacity: 1;
+    height: 125px;
+    width: 125px;
+    border-top: none;
+    border-right: 1px solid blue;
+    border-left: 1px solid blue;
+    display: block;
+    position: relative;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    line-height: 1.3em;
 }
 
-a {
+.nav__ul .Item a:hover {
+    color: blue;
+}
+
+.nav__ul .ItemDropdown a:hover {
+    color: blue;
+}
+
+a { 
     text-decoration: none;
     color: white;
 }
 
-@media(max-width: 650px) {
+@media(max-width: 660px) {
     .nav {
         display: none;
+    }
+
+    .toggle {
+        margin-bottom: 10px;
     }
 }
 

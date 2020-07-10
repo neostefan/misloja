@@ -7,3 +7,7 @@
     left: 0;
     z-index: 3;
 }
+
+.no {
+    display: none;
+}

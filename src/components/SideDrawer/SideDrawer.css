@@ -10,7 +10,7 @@
     box-shadow: 2px 0 7px #928a8a;
     transition: transform 1s ease-in;
     transform: translateX(-105%);
-    padding: 10px 10px;
+    padding: 10px 5px;
     box-sizing: border-box;
 }
 
@@ -23,6 +23,37 @@
     top: 5px;
     right: 10px;
     font-size: 36px;
+}
+
+.item__ul {
+    list-style: none;
+    box-sizing: border-box;
+    margin: 0;
+    width: 100%;
+    background-color: #eee4ee;
+    border: 1px transparent #eee4e4;
+    border-radius: 7px;
+    padding-left: 2px;
+}
+
+.item:hover {
+    cursor: pointer;
+}
+
+.item__ul:hover {
+    cursor: pointer;
+}
+
+.item__ul li {
+    line-height: 30px;
+    text-align: left;
+}
+
+.item__ul li:hover {
+    cursor: pointer;
+    border: 1px solid goldenrod;
+    border-radius: 7px;
+    background-color: goldenrod;
 }
 
 .side .close:hover {
@@ -38,7 +69,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-left: 20px;
+    padding-left: 10px;
     margin: 0;
     height: 100%;
     display: flex;

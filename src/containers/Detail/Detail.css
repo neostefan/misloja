@@ -2,9 +2,11 @@
    display: flex;
    flex-flow: column wrap;
    align-items: center;
+   padding: 10px;
+   height: 100%;
 }
 
-.detail img {
+.detail .mainImg {
     background-color: #f8f8f0;
     border: 1px transparent;
     border-radius: 7px;
@@ -12,10 +14,49 @@
     height: 550px;
 }
 
+.slide {
+    width: 1200px;
+    display: flex;
+    height: 275px;
+    justify-content: space-around;
+}
+
+.slide button {
+    height: 50px;
+    color: goldenrod;
+    width: 2px;
+    font-size: 50px;
+    background: none;
+    border: none;
+    align-self: center;
+}
+
+.slide button:hover {
+    cursor: pointer;
+}
+
+.imgshow {
+    display: flex;
+    justify-content: space-between;
+    width: 850px;
+    height: 220px;
+    margin: 5px 0;
+    overflow-x: scroll;
+    scroll-margin: 0;
+    scroll-padding: 0;
+}
+
+.imgshow img {
+    display: block;
+    width: 300px;
+    height: 200px;
+    margin: 0 10px;
+}
+
 .price {
     font-size: 20px;
     font-weight: 600;
-    padding: 10px;
+    padding: 5px;
 }
 
 .content {
@@ -46,17 +87,39 @@
     box-shadow: 2px 1px 4px gray;
     font-weight: 500;
     margin: 5px 0;
+    color: white;
 }
 
-.options button a{
+.options button:hover{
     color: white;
-    text-decoration: none;
+    background-color: blue;
+    cursor: pointer;
+    border: 1px solid blue;
 }
 
 @media(max-width: 900px) {
-    .detail img {
+    .detail .mainImg {
         width: 562.8px;
         height: 393.95px;
+    }
+
+    .slide {
+        width: 700px;
+    }
+
+    .slide button {
+        display: none;
+    }
+
+    .imgshow {
+        width: 563px;
+        height: 175px;
+        overflow-x: scroll;
+    }
+
+    .imgshow img {
+        width: 200px;
+        height: 150px;
     }
 
     .content {
@@ -65,9 +128,27 @@
 }
 
 @media(max-width: 550px) {
-    .detail img {
+    .detail .mainImg {
         width: 330px;
         height: 300px;
+    }
+
+    .slide {
+        width: 330px;
+    }
+
+    .slide button {
+        display: none;
+    }
+
+    .imgshow {
+        width: 330px;
+        height: 120px;
+    }
+
+    .imgshow img {
+        width: 105px;
+        height: 100px;
     }
 
     .content {

@@ -11,7 +11,7 @@ function App() {
       <Layout/>
       <div className="Main">
         <Store/>
-      </div>
+      </div> 
       <Footer/>
     </Aux>
   );

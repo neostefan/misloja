@@ -1,38 +1,99 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import img from '../../assets/logo512.png';
+import Error from '../../components/ErrorPage/Error';
+import { connect } from 'react-redux';
+import axios from '../../axios-inst';
 import './Detail.css';
 
-
 class Detail extends Component {
-
-    state = {
-        product: { }
+    constructor(props) {
+        super(props);
+        this.state = {
+            product: { },
+            mainImg: null,
+            images: [],
+            error: null
+        }
+        this.scrollRef = React.createRef();
+        this.updateMainImgHandler = this.updateMainImgHandler.bind(this);
     }
 
     componentDidMount() {
-        axios.get('http://localhost:8080/product' + this.props.location.search).then(Response => {
-            this.setState({ product: Response.data });
+        console.log("the error:", + this.props.location.search);
+        axios.get('/product' + this.props.location.search).then(Response => {
+            this.setState({ product: Response.data, mainImg: Response.data.images[0], images: Response.data.images });
         }).catch(err => {
-            console.log(err);
+            this.setState({error: err});
         });
         console.log(this.props);
     }
 
+    updateMainImgHandler = (index, arr) => {
+        this.setState({mainImg: arr[index]});
+    }
+
+    scrollHandlerLeft = () => {
+        this.scrollRef.current.scrollLeft += 290;
+    }
+
+    scrollHandlerRight = () => {
+        console.log('i ran');
+        this.scrollRef.current.scrollLeft -= 290;
+    }
+
     render(){
-        return (
+
+        // let options = this.props.isLoggedIn ? 
+        // (   <div className="options">
+        //         <button>Order</button>
+        //         <button>Add To Cart</button>
+        //     </div>
+        // ) : null;
+
+        let imgUrl;
+
+        let mainImgUrl = 'http://localhost:8080/' + this.state.mainImg;
+
+        let images = this.state.images.map((image, i, arr) => {
+            imgUrl = "http://localhost:8080/" + image;
+            return (<img key={image} onClick={() => this.updateMainImgHandler(i, arr)} src={`${imgUrl}`} alt="productImg"></img>)
+        });
+
+        const formatter = new Intl.NumberFormat('en-NG', {
+            style: 'currency',
+            currency: 'NGN'
+        });
+
+        let price = formatter.format(this.state.product.price);
+
+        let output = ( 
             <div className="detail">
-                <img src={img} alt="productImage"></img>
-                <div className="price">{this.state.product.name}</div>
-                <div className="price">NGN {this.state.product.price}</div>
-                <div className="content">{this.state.product.description}</div>
-                <div className="options">
-                    <button><a href="/">Order</a></button>
-                    <button><a href="/">Add To Cart</a></button>
+                <img className="mainImg" src={`${mainImgUrl}`} alt="mainImg"></img>
+                <div className="slide">
+                    <button onClick={this.scrollHandlerRight}>&larr;</button>
+                    <div className="imgshow" ref={this.scrollRef}>
+                        { images }
+                    </div>
+                    <button onClick={this.scrollHandlerLeft}>&rarr;</button>
                 </div>
+                <div className="price">{this.state.product.name}</div>
+                <div className="price">{price}</div>
+                <div className="content">{this.state.product.description}</div>
+                {/* { options } */}
             </div>
-        )
+        );
+        
+        if(this.state.error !== null) {
+            output = <Error message={this.state.error.response.data} status={this.state.error.response.status}/>
+        }
+
+        return output;
     }
 }
 
-export default Detail;
+const mapStateToProps = state => {
+    return {
+        isLoggedIn: state.auth.token !== null
+    }
+}
+
+export default connect(mapStateToProps)(Detail);

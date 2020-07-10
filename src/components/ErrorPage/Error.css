@@ -1,0 +1,27 @@
+.Error {
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
+.eCode {
+    height: 70%;
+    width: 100%;
+    background-color: #ffffff;
+    color: #daa520;
+    font-size: x-large;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 300px;
+}
+
+.eMessage {
+    height: 30%;
+    width: 100%;
+    display: flex;
+    padding: 10px 2px;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+}

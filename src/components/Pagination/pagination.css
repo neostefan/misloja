@@ -1,0 +1,17 @@
+.paginationH {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.pagination {
+    width: 60px;
+    height: 30px;
+    color: goldenrod;
+    background-color: white;
+    border: 1px solid goldenrod;
+    border-radius: 7px;
+    margin: 0 5px;
+}
