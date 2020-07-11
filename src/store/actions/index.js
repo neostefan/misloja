@@ -4,7 +4,8 @@ export {
     deleteProduct,
     buyProduct,
     createProduct,
-    fetchMerchantData
+    fetchMerchantData,
+    initProdForm
 } from './products';
 
 export {
@@ -18,5 +19,6 @@ export {
     auth,
     setAuth,
     postNewPassword,
-    postResetEmail
+    postResetEmail,
+    initAuthForm
 } from './auth';

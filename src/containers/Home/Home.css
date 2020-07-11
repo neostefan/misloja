@@ -59,11 +59,11 @@ h3#h3, h1#h1 {
 @media(max-width: 700px) {
     /* use animations here */
     .Info {
-        background-image: linear-gradient(30deg, #dbd7de 50%, goldenrod 50%);
+        background-image: linear-gradient(30deg, #555555 50%, goldenrod 50%);
     }
 
     .Info2 {
-        background-image: linear-gradient(30deg, goldenrod 50%, #dbd7de 50%);
+        background-image: linear-gradient(30deg, goldenrod 50%, #555555 50%);
     }
 
     .Info .container .media, .Info2 .container .media {

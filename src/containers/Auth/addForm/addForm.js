@@ -18,6 +18,7 @@ class AddForm extends Component {
     }
 
     componentDidMount() {
+        this.props.initForm();
         if(this.props.location.search) {
             let url = this.props.match.url + this.props.location.search; 
             
@@ -43,6 +44,8 @@ class AddForm extends Component {
             price: Yup.number().required(),
             description: Yup.string().min(10).required()
         });
+
+        let errorType = this.props.error ? "errorsFail" : "errorsSuccess";
 
         return (
             <Formik enableReinitialize initialValues={{name: this.state.name, price: +this.state.price, description: this.state.description, category: 'clothes' || this.state.category, image: null}} validationSchema={validationSchema}
@@ -71,6 +74,8 @@ class AddForm extends Component {
                     actions.resetForm(); }}>
                 {({ handleSubmit, values, handleChange, handleBlur, isSubmitting, touched, errors }) => (
                     <Aux>
+                        { this.props.error ? <div className={errorType}>{this.props.error.response.data}</div> : null }
+                        { this.props.msg ? <div className={errorType}>{this.props.msg}</div> : null }
                         <div className="myForm">
                             <form onSubmit={handleSubmit}>
                                 <div className="form-group">
@@ -116,14 +121,16 @@ class AddForm extends Component {
 
 const mapStateToProps = state => {
     return {
-        error: state.products.error
+        error: state.products.error,
+        msg: state.products.msg
     }
 } 
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         EditProduct: (id, fd) => dispatch(actionCreators.editProduct(ownProps, id, fd)),
-        CreateProduct: (fd) => dispatch(actionCreators.createProduct(ownProps, fd))
+        CreateProduct: (fd) => dispatch(actionCreators.createProduct(ownProps, fd)),
+        initForm: () => dispatch(actionCreators.initProdForm())
     }
 }
 

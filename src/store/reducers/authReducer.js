@@ -89,6 +89,13 @@ const authReducer = (state = initialState, action) => {
                 loading: false,
                 error: action.error
             }
+
+        case actionTypes.INIT_FORM:
+            return {
+                ...state,
+                error: null,
+                msg: null
+            }
             
         default: return state
     }

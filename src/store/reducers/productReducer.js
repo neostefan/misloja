@@ -3,6 +3,7 @@ import * as actionTypes from '../actions/actionTypes';
 var initialState = {
     products: null,
     loading: false,
+    msg: null,
     error: null,
     merchantData: null
 }
@@ -96,6 +97,7 @@ const reducer = (state = initialState, action) => {
         case actionTypes.EDIT_SUCCESS:
             return {
                 ...state,
+                msg: action.msg,
                 loading: false
             }
 
@@ -116,7 +118,7 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 loading: false,
-                products: action.products
+                msg: action.msg
             }
 
         case actionTypes.CREATE_FAIL:
@@ -145,6 +147,13 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 loading: false,
                 error: action.error
+            }
+
+        case actionTypes.INIT_FORM:
+            return {
+                ...state,
+                msg: null,
+                error: null
             }
 
         default: return state;

@@ -161,3 +161,9 @@ export const postNewPasswordFail = (err) => {
         error: err
     }
 }
+
+export const initAuthForm = () => {
+    return {
+        type: actionTypes.INIT_FORM
+    }
+}

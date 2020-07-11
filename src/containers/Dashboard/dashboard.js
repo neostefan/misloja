@@ -99,7 +99,7 @@ class DashBoard extends Component {
                         position: 'outer-center'
                     },
                     tick: {
-                        rotate: 75,
+                        rotate: 15,
                         count: count
                     }
                 },

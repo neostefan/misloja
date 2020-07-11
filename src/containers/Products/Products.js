@@ -19,12 +19,6 @@ class Main extends Component {
        this.props.InitProducts();
     }
 
-    componentDidUpdate(prevProps, prevState) {
-        if(prevProps.location.key !== this.props.location.key) {
-            this.props.InitProducts();
-        }
-    }
-
     editHandler = (id) => {
         let url = this.props.match.params.store + "/admin/edit?Id=" + id;
         this.props.history.push("/" + url);

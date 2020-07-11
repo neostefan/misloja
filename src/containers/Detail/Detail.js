@@ -18,13 +18,20 @@ class Detail extends Component {
     }
 
     componentDidMount() {
-        console.log("the error:", + this.props.location.search);
-        axios.get('/product' + this.props.location.search).then(Response => {
+        let url;
+        let token = localStorage.getItem('token');
+        if(this.props.isAuthenticated) {
+            url = this.props.match.url + this.props.location.search;
+        } else {
+            url = "/product" + this.props.location.search;
+        }
+
+        axios.get(url, {headers: { "Authorization": token }})
+        .then(Response => {
             this.setState({ product: Response.data, mainImg: Response.data.images[0], images: Response.data.images });
         }).catch(err => {
             this.setState({error: err});
         });
-        console.log(this.props);
     }
 
     updateMainImgHandler = (index, arr) => {
@@ -36,7 +43,6 @@ class Detail extends Component {
     }
 
     scrollHandlerRight = () => {
-        console.log('i ran');
         this.scrollRef.current.scrollLeft -= 290;
     }
 
@@ -83,7 +89,8 @@ class Detail extends Component {
         );
         
         if(this.state.error !== null) {
-            output = <Error message={this.state.error.response.data} status={this.state.error.response.status}/>
+            output = <Error message={this.state.error.response.data} 
+            status={this.state.error.response.status} show={this.state.error !== null}/>
         }
 
         return output;
@@ -92,7 +99,8 @@ class Detail extends Component {
 
 const mapStateToProps = state => {
     return {
-        isLoggedIn: state.auth.token !== null
+        isLoggedIn: state.auth.token !== null,
+        isAuthenticated: state.auth.merchantToken !== null
     }
 }
 

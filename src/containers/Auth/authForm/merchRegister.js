@@ -14,6 +14,10 @@ class Register extends Component {
         message: null
     }
 
+    componentDidMount() {
+        this.props.initForm();
+    }
+
     switchHandler = () => {
        this.props.history.push("/login");
     }
@@ -100,7 +104,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        onAuth: (values) => dispatch(actionCreators.auth(values, ownProps))
+        onAuth: (values) => dispatch(actionCreators.auth(values, ownProps)),
+        initForm: () => dispatch(actionCreators.initAuthForm())
     }
 }
 

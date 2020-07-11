@@ -3,7 +3,6 @@ import Aux from '../../hoc/Aux';
 import './Error.css';
 
 const Error = props => {
-    console.log("I rendered");
     let output = props.show ?  
     <Aux>
         <div className="Error">

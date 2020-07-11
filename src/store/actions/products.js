@@ -66,8 +66,7 @@ export const createProduct = (props, fd) => {
         dispatch(createStart());
 
         axios.post(url, fd, { headers: { "Authorization": token }}).then(response => {
-            dispatch(createSuccess(response.data.products));
-            props.history.push("/" + props.match.params.store + "/admin/products");  
+            dispatch(createSuccess(response.data.msg)); 
         }).catch(err => {
             dispatch(createFail(err));
         });
@@ -75,10 +74,10 @@ export const createProduct = (props, fd) => {
 }
 
 
-export const createSuccess = (products) => {
+export const createSuccess = (msg) => {
     return {
         type: actionTypes.CREATE_SUCCESS,
-        products: products
+        msg: msg
     }
 }
 
@@ -184,18 +183,18 @@ export const editProduct = (props, id, fd) => {
             "Content-Type": "multipart/form-data"
         };
 
-        axios.put(url, fd, { headers: headers }).then(Response => {
-            dispatch(editSuccess());
-            props.history.push("/" + props.match.params.store + '/admin/products');
+        axios.put(url, fd, { headers: headers }).then(response => {
+            dispatch(editSuccess(response.data.msg));
         }).catch(err => {
             dispatch(editFail(err));
         });
     }
 }
 
-export const editSuccess = () => {
+export const editSuccess = (msg) => {
     return {
-        type: actionTypes.EDIT_SUCCESS
+        type: actionTypes.EDIT_SUCCESS,
+        msg: msg
     }
 }
 
@@ -236,5 +235,11 @@ export const fetchMerchantDataFail = (err) => {
     return {
         type: actionTypes.FETCH_MERCHANT_DATA_FAIL,
         error: err
+    }
+}
+
+export const initProdForm = () => {
+    return {
+        type: actionTypes.INIT_FORM
     }
 }

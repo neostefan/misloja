@@ -13,6 +13,10 @@ class Form extends Component {
         isSignUp: false
     }
 
+    componentDidMount() {
+        this.props.initForm();
+    }
+
     resetHandler = () => {
         this.props.history.push("/reset-password");
     }
@@ -82,7 +86,8 @@ const MapStateToProps = state => {
 
 const MapDispatchToProps = (dispatch, ownProps) => {
     return {
-        onAuth: (values) => dispatch(actionCreators.auth(values, ownProps))
+        onAuth: (values) => dispatch(actionCreators.auth(values, ownProps)),
+        initForm: () => dispatch(actionCreators.initAuthForm())
     }
 }
 

@@ -63,7 +63,7 @@ class Home extends Component {
                             <div className="textbox">
                                 <h3 className="textbox-header">Unique and Personal</h3>
                                 <div className="textbox-body">
-                                    Here at windo you are given your own brand website, each 
+                                    Here at Misloja you are given your own brand website, each 
                                     brand gets their own unique url where only your customers
                                     can visit no interference with any other brand.
                                 </div>
