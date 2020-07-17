@@ -4,7 +4,7 @@ COPY ./package-lock.json ./
 COPY ./package.json ./
 COPY . ./
 RUN npm install --silent
-RUN npm install -g react-scripts --silent
+RUN npm install react-scripts
 RUN npm run build
 
 FROM nginx:1.16-alpine
