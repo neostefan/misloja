@@ -6,13 +6,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 5px;
 }
 
 .Board img {
     position: absolute;
     opacity: 0;
-    animation: intro 4s ease-out .5s forwards;
+    animation: intro 7s ease-out 2s forwards;
 }
 
 .Content {
@@ -21,13 +20,18 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 5px;
+    padding: 10px;
     height: 100%;
     animation-name: info;
-    animation-duration: 1.5s;
-    animation-delay: 4s;
+    animation-duration: 5s;
+    animation-delay: 4.5s;
     animation-timing-function: ease-in;
     animation-fill-mode: forwards;
+    line-height: 3.5em;
+}
+
+.Content h2 {
+    margin: 0;
 }
 
 .Board_btn {
@@ -58,33 +62,33 @@
     50% {
         opacity: 1;
         top: 200px;
-        right: 510px;
+        right: 450px;
     }
 
     100% {
         opacity: 0;
-        right: 2000px;
         top: 200px;
+        right: 2000px;
     }
 }
 
 @keyframes intro_mobile {
     0% {
         opacity: 0;
-        top: 200px;
+        top: 70px;
         right: -500px;
     }
 
     50% {
         opacity: 1;
-        top: 200px;
-        right: 15px;
+        top: 70px;
+        right: 10px;
     }
 
     100% {
         opacity: 0;
+        top: 70px;
         right: 2000px;
-        top: 200px;
     }
 }
 
@@ -94,7 +98,17 @@
 }
 
 @media(max-width: 500px) {
+
+    .Board {
+        height: 450px;
+    }
+
+    .Content {
+        font-size: smaller;
+        line-height: 2.5em;
+    }
+
     .Board img {
-        animation: intro_mobile 4s ease-in 1s forwards;
+        animation: intro_mobile 7s ease-out 2.5s forwards;
     }
 }

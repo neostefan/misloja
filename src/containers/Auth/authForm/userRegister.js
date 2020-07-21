@@ -64,7 +64,8 @@ class UserForm extends Component {
 const mapStateToProps = state => {
     return {
         error: state.auth.error,
-        msg: state.auth.msg
+        msg: state.auth.msg,
+        loading: state.auth.loading
     }
 }
 

@@ -8,7 +8,7 @@
     z-index: 10;
     max-width: 400px;
     box-shadow: 2px 0 7px #928a8a;
-    transition: transform 1s ease-in;
+    transition: transform .7s ease-out;
     transform: translateX(-105%);
     padding: 10px 5px;
     box-sizing: border-box;

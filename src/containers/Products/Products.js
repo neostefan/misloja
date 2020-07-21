@@ -47,8 +47,8 @@ class Main extends Component {
             console.log(this.props.error.message);
             console.log(this.props.products);
             output = <div>Something went wrong</div>
-            // output = <Error show={this.props.error} status={this.props.error.response.status}
-            // message={this.props.error.response.data} />
+            output = <Error show={this.props.error} status={this.props.error.response.status}
+            message={this.props.error.response.data} />
         }
 
         if(this.props.products !== null) {

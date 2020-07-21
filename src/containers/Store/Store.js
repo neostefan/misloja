@@ -38,6 +38,8 @@ class Store extends Component {
                 <Route path="/products" component={ Products }/>
                 <Route path="/signup" component={ SignUpUser }/>
                 <Route path="/cart" component={ Cart }/>
+                <Route path="/reset-password" component={ Email }/>
+                <Route path="/set-password" component={ Password }/>
                 <Redirect to="/"/>
             </Switch>
         )
@@ -50,8 +52,6 @@ class Store extends Component {
                     <Route path="/:store/admin/edit" component={ Add }/>
                     <Route path="/:store/admin/products" component={ Products }/>
                     <Route path="/:store/admin/" component={ Dashboard }/>
-                    <Route path="/reset-password" component={ Email }/>
-                    <Route path="/set-password" component={ Password }/>
                     <Route path="/logout" component={ Logout }/>
                     <Redirect to="/logout"/>
                 </Switch>

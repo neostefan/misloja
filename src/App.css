@@ -2,3 +2,8 @@
     min-height: calc(100vh - 100px);
     height: auto;
 }
+
+body, html {
+    margin: 0;
+    width: 100%;
+}

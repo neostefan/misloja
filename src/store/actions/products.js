@@ -30,10 +30,8 @@ export const fetchProducts = (props) => {
         }
 
         axios.get(url, { headers: { "Authorization": token }}).then(response => {
-            console.log(response.data);
             dispatch(fetchSuccess(response.data.goods));
         }).catch(err => {
-            console.log(err.message);
             dispatch(fetchFailed(err));
         });
     }

@@ -38,6 +38,7 @@ const Navbar = (props) => {
             <div className="toggle">
                 <Hamburger click={props.clicked}/>
             </div>
+            <div className="spacerM"></div>
             <div className="logo"><Link to={location => { let url = routeCheckerHandler(location.pathname); return {...location, pathname: url, search: null}}}><img alt="logo" src={img}/></Link></div>
             <div className="spacer"></div>
             <nav className="nav">

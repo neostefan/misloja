@@ -1,38 +1,37 @@
 import React, { Component } from  'react';
 import { Formik } from 'formik';
-import * as actionCreators from '../../../store/actions';
 import * as Yup from 'yup';
+import axios from '../../../axios-inst';
 import Aux from '../../../hoc/Aux';
 import '../Form.css';
-import { connect } from 'react-redux';
 import Spinner from '../../../components/Spinner/spinner';
 
 class Register extends Component {
 
     state = {
-        hasMessage: false,
-        message: null
+        msg: null,
+        err: null,
+        loading: false
     }
 
     componentDidMount() {
-        this.props.initForm();
-    }
-
-    switchHandler = () => {
-       this.props.history.push("/login");
+        this.setState({msg: null, err: null, loading: false});
     }
 
     submitHandler = (values) => {
-        this.props.onAuth(values);
+        let url = this.props.match.url;
+
+        this.setState({loading: true});
+
+        axios.post(url, values).then(response => {
+            this.setState({msg: response.data.msg, loading: false});
+        }).catch(err => {
+            this.setState({err: err.response.data, loading: false});
+        });
     }
     
     render() {
-        let cssStyle = 'errorsSuccess';
-
-        if(this.props.error !== null) {
-            cssStyle = 'errorsFail';
-        }
-
+        let cssStyle = this.state.err === null ? 'errorsSuccess' : 'errorsFail';
         
         const validationSchema = Yup.object().shape({
             email: Yup.string().email().required(),
@@ -47,7 +46,8 @@ class Register extends Component {
             validationSchema={validationSchema}>
             {({values, handleChange, errors, touched, handleBlur, isSubmitting, handleSubmit}) => (
                 <Aux>
-                    { this.props.error !== null ? <div className={cssStyle}>{this.props.error.response.data}</div> : null }
+                    { this.state.msg ? <div className={cssStyle}>{this.state.msg}</div> : null }
+                    { this.state.err !== null ? <div className={cssStyle}>{this.state.err}</div> : null }
                     <div className="myForm">
                         <form onSubmit={() => this.submitHandler(values)}>
                             <div className="form-group">
@@ -78,7 +78,6 @@ class Register extends Component {
                                 </select>
                             </div>
                             <div className="form-group-opt">
-                                <div onClick={this.switchHandler}>Switch to Log In!</div>
                                 <button type="submit" disabled={isSubmitting}>Sign Up!</button>
                             </div>
                         </form>
@@ -87,7 +86,7 @@ class Register extends Component {
             )}
         </Formik>
 
-        if(this.props.loading === true) {
+        if(this.state.loading === true) {
             output = <Spinner/>
         }
 
@@ -95,18 +94,4 @@ class Register extends Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        error: state.auth.error,
-        loading: state.auth.loading
-    }
-}
-
-const mapDispatchToProps = (dispatch, ownProps) => {
-    return {
-        onAuth: (values) => dispatch(actionCreators.auth(values, ownProps)),
-        initForm: () => dispatch(actionCreators.initAuthForm())
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Register);
+export default Register;

@@ -1,6 +1,6 @@
 .topbar {
     width: 100%;
-    height: 45px;
+    height: 50px;
     margin: 0;
     background: goldenrod;
     display: flex;
@@ -10,8 +10,16 @@
     box-sizing: border-box;
 }
 
+.topbar .toggle {
+    display: none;
+}
+
 .topbar .menu, .topbar .logo{
     padding: 0 10px;
+}
+
+.topbar .spacerM {
+    display: none;
 }
 
 .nav__ul {
@@ -42,6 +50,10 @@
     padding: 0;
     line-height: 25px;
     display: none;
+}
+
+.nav__ul .ItemDropdown .open {
+    
 }
 
 .nav__ul .ItemDropdown .open li {
@@ -88,18 +100,45 @@ a {
     color: white;
 }
 
-@media(max-width: 660px) {
+@media(max-width: 900px) {
     .nav {
         display: none;
     }
 
-    .toggle {
-        margin-bottom: 10px;
+    .topbar .toggle {
+        display: block;
+    }
+
+    .topbar .spacer {
+        flex: 0;
+    }
+
+    .topbar .spacerM {
+        display: flex;
+        flex: 1;
     }
 }
 
-@media(min-width: 660px) {
-    .toggle {
+@media(max-width: 500px) {
+
+    .nav {
         display: none;
+    }
+
+    .topbar {
+        align-items: center;
+    }
+
+    .topbar .toggle {
+        display: block;
+    }
+
+    .topbar .spacerM {
+        display: flex;
+        flex: 1;
+    }
+
+    .topbar .spacer {
+        flex: 0;
     }
 }

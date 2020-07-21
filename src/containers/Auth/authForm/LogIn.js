@@ -9,21 +9,12 @@ import '../Form.css';
 
 class Form extends Component {
 
-    state = {
-        isSignUp: false
-    }
-
     componentDidMount() {
         this.props.initForm();
     }
 
     resetHandler = () => {
         this.props.history.push("/reset-password");
-    }
-
-    switchHandler = () => {
-        this.setState(prevState => !prevState.isSignUp);
-        this.props.history.push("/signup");
     }
 
     submitHandler = (values) => {
@@ -40,7 +31,7 @@ class Form extends Component {
 
         let output = 
             <Formik initialValues={{email: "", password: ""}} validationSchema={validationSchema}>
-            {({values, touched, isSubmitting, handleBlur, handleChange, handleSubmit, errors}) => (
+            {({values, touched, isSubmitting, handleBlur, handleChange, errors}) => (
                 <Aux>
                     { this.props.error ? <div className={Class}>{this.props.error.response.data}</div> : null }
                     <div className="myForm">
@@ -58,7 +49,6 @@ class Form extends Component {
                                 { touched.password && errors.password ? <div className="error">{errors.password}</div> : null }
                             </div>
                             <div className="form-group-opt">
-                                <div onClick={this.switchHandler}>Switch to {this.state.isSignUp ? "Log-In" : "Sign-Up"}</div>
                                 <button type="submit" disabled={isSubmitting}>Log In!</button>
                                 <div onClick={this.resetHandler}>Forgot Password ?</div>
                             </div>
