@@ -35,7 +35,7 @@ class Register extends Component {
         
         const validationSchema = Yup.object().shape({
             email: Yup.string().email().required(),
-            password: Yup.string().min(7).required(),
+            password: Yup.string().min(7, 'password should be a min of 7').required(),
             mobile: Yup.string().min(11).max(11).required(),
             store: Yup.string().min(5).required()
         });

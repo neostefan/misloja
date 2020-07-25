@@ -68,6 +68,9 @@ export const createProduct = (props, fd) => {
         axios.post(url, fd, { headers: { "Authorization": token }}).then(response => {
             dispatch(createSuccess(response.data.msg)); 
         }).catch(err => {
+            console.log("line 71 product addition");
+            console.log(err.response.data);
+            console.log(err.message);
             dispatch(createFail(err));
         });
     }
