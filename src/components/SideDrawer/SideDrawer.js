@@ -44,7 +44,7 @@ const SideDrawer = props => {
         )
     }
 
-    //opt2 = (<li className="item"><Link to="/logout">LogOut</Link></li>); 
+    opt2 = (<li className="item"><Link to="/logout">LogOut</Link></li>); 
     //opt2 = (<li className="item"><Link to="/login">LogIn</Link></li>);
 
     let drawerClasses = 'side';
@@ -61,7 +61,7 @@ const SideDrawer = props => {
                 <li className="item"><Link to={location => {let url = routeCheckerHandler(location.pathname); return {...location, pathname: url + "products", search: null}}}>Products</Link>{ props.isAuth ? null :<span onClick={() => click()}> &darr;</span> }
                     { opt }
                 </li>
-                { opt2 }
+                { props.isAuth ? opt2 : null }
             </ul>
         </div>
     );

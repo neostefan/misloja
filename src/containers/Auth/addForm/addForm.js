@@ -14,7 +14,8 @@ class AddForm extends Component {
         description: "",
         category: "clothes",
         price: 0,
-        file: null
+        file: null,
+        err: null
     }
 
     componentDidMount() {
@@ -28,7 +29,7 @@ class AddForm extends Component {
                 this.setState({ name: Response.data.product.name, description: Response.data.product.description,
                 category: Response.data.product.category, price: Response.data.product.price });
             }).catch(err => {
-                console.log(err);
+                this.setState({err: err.response.data});
             });
         }
     }
@@ -74,8 +75,11 @@ class AddForm extends Component {
                     actions.resetForm(); }}>
                 {({ handleSubmit, values, handleChange, handleBlur, isSubmitting, touched, errors }) => (
                     <Aux>
-                        { this.props.error ? <div className={errorType}>{this.props.error.response.data}</div> : null }
+                        { this.props.error || this.state.err ? <div className={errorType}>
+                            {this.props.error ? this.props.error.response.data : this.state.err}
+                            </div> : null }
                         { this.props.msg ? <div className={errorType}>{this.props.msg}</div> : null }
+                        { this.props.loading ? <div>loading ...</div> : null }
                         <div className="myForm">
                             <form onSubmit={handleSubmit}>
                                 <div className="form-group">
@@ -122,7 +126,8 @@ class AddForm extends Component {
 const mapStateToProps = state => {
     return {
         error: state.products.error,
-        msg: state.products.msg
+        msg: state.products.msg,
+        loading: state.products.loading
     }
 } 
 

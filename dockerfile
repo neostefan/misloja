@@ -3,9 +3,8 @@ WORKDIR /app
 COPY ./package-lock.json ./
 COPY ./package.json ./
 COPY . ./
-RUN npm install --silent
-RUN npm install react-scripts
-RUN npm run build
+RUN mkdir images && \ npm install --silent && \ npm install react-scripts && \ npm run build
+
 
 FROM nginx:1.16-alpine
 COPY ./nginx.conf /etc/nginx/conf.d/default.conf
