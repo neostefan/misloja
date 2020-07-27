@@ -61,6 +61,7 @@ const routeCheckerHandler = (pathname) => {
         return url = "/" + some[1] + "/" + some[2] + "/";
     }
 
+    url = '/';
     return url;
 }
 

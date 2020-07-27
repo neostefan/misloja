@@ -36,18 +36,18 @@
 }
 
 .imgshow {
-    display: flex;
-    justify-content: space-between;
     width: 850px;
     height: 220px;
     margin: 5px 0;
+    white-space: nowrap;
+    overflow-y: hidden;
     overflow-x: scroll;
     scroll-margin: 0;
     scroll-padding: 0;
 }
 
 .imgshow img {
-    display: block;
+    display: inline-block;
     width: 300px;
     height: 200px;
     margin: 0 10px;

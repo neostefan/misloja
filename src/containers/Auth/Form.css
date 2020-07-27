@@ -116,6 +116,21 @@
     margin-top: 10px;
 }
 
+.load {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid goldenrod;
+    background-color: #d8ac3e;
+    width: 300px;
+    padding: 5px;
+    margin-top: 10px;
+    color: goldenrod;
+    border-radius: 7px;
+}
+
 div.Smessage {
     background-color:#8edb8e;
     text-align: center;

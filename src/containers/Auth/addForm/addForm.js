@@ -79,7 +79,7 @@ class AddForm extends Component {
                             {this.props.error ? this.props.error.response.data : this.state.err}
                             </div> : null }
                         { this.props.msg ? <div className={errorType}>{this.props.msg}</div> : null }
-                        { this.props.loading ? <div>loading ...</div> : null }
+                        { this.props.loading ? <div className="load">loading ...</div> : null }
                         <div className="myForm">
                             <form onSubmit={handleSubmit}>
                                 <div className="form-group">
