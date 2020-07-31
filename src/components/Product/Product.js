@@ -29,7 +29,7 @@ const Product = props => {
     });
 
     let price = formatter.format(props.price);
-    let image = "http://localhost:8080/" + props.images[0];
+    let image = "http://34.67.85.12:5000/" + props.images[0];
 
     return (
         <div className="card__lg">

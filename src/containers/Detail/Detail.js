@@ -57,10 +57,10 @@ class Detail extends Component {
 
         let imgUrl;
 
-        let mainImgUrl = 'http://localhost:5000/' + this.state.mainImg;
+        let mainImgUrl = 'http://34.67.85.12:5000/' + this.state.mainImg;
 
         let images = this.state.images.map((image, i, arr) => {
-            imgUrl = "http://localhost:5000/" + image;
+            imgUrl = "http://34.67.85.12:5000/" + image;
             return (<img key={image} onClick={() => this.updateMainImgHandler(i, arr)} src={`${imgUrl}`} alt="productImg"></img>)
         });
 

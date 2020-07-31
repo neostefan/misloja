@@ -60,14 +60,16 @@ const authReducer = (state = initialState, action) => {
             return {
                 ...state,
                 loading: false,
-                msg: action.msg
+                msg: action.msg,
+                error: null
             }
 
         case actionTypes.RESET_PASSWORD_FAIL:
             return {
                 ...state,
                 loading: false,
-                error: action.error
+                error: action.error,
+                msg: null
             }
 
         case actionTypes.SET_PASSWORD_START:
