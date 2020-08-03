@@ -40,6 +40,7 @@ const SideDrawer = props => {
                 <li><Link to={location => { let url = routeCheckerHandler(location.pathname); return {...location, pathname: url + "category", search: "?type=phones"}}}>Phones</Link></li>
                 <li><Link to={location => { let url = routeCheckerHandler(location.pathname); return {...location, pathname: url + "category", search: "?type=cosmetics"}}}>Cosmetics</Link></li>
                 <li><Link to={location => { let url = routeCheckerHandler(location.pathname); return {...location, pathname: url + "category", search: "?type=electronics"}}}>Electronics</Link></li>
+                <li><Link to={location => { let url = routeCheckerHandler(location.pathname); return {...location, pathname: url + "category", search: "?type=others"}}}>Others</Link></li>
             </ul>
         )
     }

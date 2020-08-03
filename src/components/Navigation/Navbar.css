@@ -52,10 +52,6 @@
     display: none;
 }
 
-.nav__ul .ItemDropdown .open {
-    
-}
-
 .nav__ul .ItemDropdown .open li {
     width: 100%;
 }
@@ -74,7 +70,7 @@
     background-color: goldenrod;
     z-index: 100;
     opacity: 1;
-    height: 125px;
+    height: 150px;
     width: 125px;
     border-top: none;
     border-right: 1px solid blue;

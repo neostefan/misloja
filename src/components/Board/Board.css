@@ -10,23 +10,18 @@
 
 .Board img {
     position: absolute;
-    opacity: 0;
-    animation: intro 7s ease-out 2s forwards;
+    opacity: 0.3;
+    animation: intro 7s ease-out 2s infinite forwards;
 }
 
 .Content {
-    opacity: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 10px;
     height: 100%;
-    animation-name: info;
-    animation-duration: 5s;
-    animation-delay: 4.5s;
-    animation-timing-function: ease-in;
-    animation-fill-mode: forwards;
     line-height: 3.5em;
+    z-index: 10;
 }
 
 .Content h2 {
@@ -52,48 +47,8 @@
 }
 
 @keyframes intro {
-    0% {
-        opacity: 0;
-        top: 200px;
-        right: 0px;
-    }
-
-    50% {
-        opacity: 1;
-        top: 200px;
-        right: 450px;
-    }
-
-    100% {
-        opacity: 0;
-        top: 200px;
-        right: 2000px;
-    }
-}
-
-@keyframes intro_mobile {
-    0% {
-        opacity: 0;
-        top: 70px;
-        right: -500px;
-    }
-
-    50% {
-        opacity: 1;
-        top: 70px;
-        right: 10px;
-    }
-
-    100% {
-        opacity: 0;
-        top: 70px;
-        right: 2000px;
-    }
-}
-
-@keyframes info {
-    from { transform: translateX(1000px); opacity: 0;  }
-    to { transform: translateX(0px); opacity: 1; }
+    from {transform: rotate(0deg);}
+    to {transform: rotate(15deg); opacity: 0.75;}
 }
 
 @media(max-width: 500px) {
@@ -105,9 +60,5 @@
     .Content {
         font-size: smaller;
         line-height: 2.5em;
-    }
-
-    .Board img {
-        animation: intro_mobile 7s ease-out 2.5s forwards;
     }
 }

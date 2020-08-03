@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import * as actionCreators from '../../../store/actions';
 import axios from '../../../axios-inst';
 import Aux from '../../../hoc/Aux';
+import Spinner from '../../../components/Spinner/spinner';
 import '../Form.css';
 
 class AddForm extends Component {
@@ -48,7 +49,7 @@ class AddForm extends Component {
 
         let errorType = this.props.error ? "errorsFail" : "errorsSuccess";
 
-        return (
+        return ( this.props.loading ? <Spinner/> :
             <Formik enableReinitialize initialValues={{name: this.state.name, price: +this.state.price, description: this.state.description, category: 'clothes' || this.state.category, image: null}} validationSchema={validationSchema}
                 onSubmit={(values, actions) => {
                     actions.setSubmitting(true);
@@ -79,7 +80,6 @@ class AddForm extends Component {
                             {this.props.error ? this.props.error.response.data : this.state.err}
                             </div> : null }
                         { this.props.msg ? <div className={errorType}>{this.props.msg}</div> : null }
-                        { this.props.loading ? <div className="load">loading ...</div> : null }
                         <div className="myForm">
                             <form onSubmit={handleSubmit}>
                                 <div className="form-group">
@@ -104,6 +104,8 @@ class AddForm extends Component {
                                         <option value="shoes">Shoes</option>
                                         <option value="accessories">Accessories</option>
                                         <option value="cosmetics">Cosmetics</option>
+                                        <option value="electronics">Electronics</option>
+                                        <option value="others">Others</option>
                                     </select>
                                 </div>
                                 <div className="form-group">
