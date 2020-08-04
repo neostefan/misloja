@@ -83,7 +83,7 @@ class Detail extends Component {
                 </div>
                 <div className="price">{this.state.product.name}</div>
                 <div className="price">{price}</div>
-                <div className="content">{this.state.product.description}</div>
+                <pre className="content">{this.state.product.description}</pre>
                 {/* { options } */}
             </div>
         );

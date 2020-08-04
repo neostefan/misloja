@@ -64,10 +64,6 @@
     padding: 20px;
 }
 
-.content > div:nth-child(odd) {
-    background-color: red
-}
-
 .options {
     display: flex;
     flex-direction: column-reverse;

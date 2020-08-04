@@ -96,7 +96,7 @@ class DashBoard extends Component {
                     type: 'category',
                     label: {
                         text: 'Products',
-                        position: 'outer-center'
+                        position: 'outer-right'
                     },
                     tick: {
                         rotate: 15,
