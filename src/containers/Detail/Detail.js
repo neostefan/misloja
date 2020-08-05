@@ -11,7 +11,8 @@ class Detail extends Component {
             product: { },
             mainImg: null,
             images: [],
-            error: null
+            error: null,
+            mobile:null
         }
         this.scrollRef = React.createRef();
         this.updateMainImgHandler = this.updateMainImgHandler.bind(this);
@@ -28,7 +29,8 @@ class Detail extends Component {
 
         axios.get(url, {headers: { "Authorization": token }})
         .then(Response => {
-            this.setState({ product: Response.data, mainImg: Response.data.images[0], images: Response.data.images });
+            this.setState({ product: Response.data, mainImg: Response.data.images[0], images: Response.data.images,
+            mobile: Response.data.seller.mobile });
         }).catch(err => {
             this.setState({error: err});
         });
@@ -84,6 +86,9 @@ class Detail extends Component {
                 <div className="price">{this.state.product.name}</div>
                 <div className="price">{price}</div>
                 <pre className="content">{this.state.product.description}</pre>
+                {this.props.isAuthenticated ? null 
+                    : <div className="price">Call {this.state.mobile} to place an order</div>
+                }
                 {/* { options } */}
             </div>
         );
