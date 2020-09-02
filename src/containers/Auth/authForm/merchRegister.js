@@ -24,14 +24,18 @@ class Register extends Component {
         this.setState({loading: true});
 
         axios.post(url, values).then(response => {
-            this.setState({msg: response.data.msg, loading: false});
+            this.setState({msg: response.data.msg, err: null, loading: false});
         }).catch(err => {
-            this.setState({err: err.response.data, loading: false});
+            this.setState({err: err.response.data, msg: null, loading: false});
         });
     }
     
     render() {
-        let cssStyle = this.state.err === null ? 'errorsSuccess' : 'errorsFail';
+
+        let cssStyle = "errorsFail";
+        if(this.state.err === null) {
+            cssStyle = "errorsSuccess"
+        }
         
         const validationSchema = Yup.object().shape({
             email: Yup.string().email().required(),
@@ -44,10 +48,10 @@ class Register extends Component {
         <Formik 
             initialValues={{password: "", email: "", mobile: "", package: "Free", store: '' }}
             validationSchema={validationSchema}>
-            {({values, handleChange, errors, touched, handleBlur, isSubmitting, handleSubmit}) => (
+            {({values, handleChange, errors, touched, handleBlur, isSubmitting }) => (
                 <Aux>
                     { this.state.msg ? <div className={cssStyle}>{this.state.msg}</div> : null }
-                    { this.state.err !== null ? <div className={cssStyle}>{this.state.err}</div> : null }
+                    { this.state.err ? <div className={cssStyle}>{this.state.err}</div> : null }
                     <div className="myForm">
                         <form onSubmit={() => this.submitHandler(values)}>
                             <div className="form-group">
